@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Life.Grass" Collapsed="true">
+    <Position X="4" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAACAAAAAAAAIAAA=</HashCode>
+      <FileName>Objects\Plants\Grass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Life.Herbivore" Collapsed="true">
+    <Position X="13.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACACAAAAAAAAAAAAAAAAAAACAAAAAACAAAAA=</HashCode>
+      <FileName>Objects\Animals\Herbivore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Life.Object" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAQIAAA=</HashCode>
+      <FileName>Objects\Object.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Life.Omnivorous" Collapsed="true">
+    <Position X="13.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACACAAAAAAAAEAAAAIAIAAACAAAAAACAAAAA=</HashCode>
+      <FileName>Objects\Animals\Omnivorous.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Life.Plant" Collapsed="true">
+    <Position X="5.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACABAAAAAAAAAEUAAAIAAAAAAACAAAACAAAAIgA=</HashCode>
+      <FileName>Objects\Plants\Plant.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Life.Predator" Collapsed="true">
+    <Position X="13.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAIAAAAACAAAAAACAAAAA=</HashCode>
+      <FileName>Objects\Animals\Predator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Life.Program" Collapsed="true">
+    <Position X="14.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Life.Tree" Collapsed="true">
+    <Position X="6.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Objects\Plants\Tree.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Life.WorldInfo" Collapsed="true">
+    <Position X="12.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAQAEAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>WorldInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Life.Earth" Collapsed="true">
+    <Position X="8" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Earth.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Life.Animal" Collapsed="true">
+    <Position X="11.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAhAAiABGImABIAMAEAAAAEBAAAAAACAAACCCCBAABM=</HashCode>
+      <FileName>Objects\Animals\Animal.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Life.Point" Collapsed="true">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAABgAAAAYAA=</HashCode>
+      <FileName>Objects\Point.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Life.IFood" Collapsed="true">
+    <Position X="3.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Intarface\IFood.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Life.IHightObject" Collapsed="true">
+    <Position X="1.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Intarface\IHightObject.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Life.IPoint" Collapsed="true">
+    <Position X="1.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAA=</HashCode>
+      <FileName>Intarface\IPoint.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Life
 {
-    internal class Omnivorous : Animal
+    internal sealed class Omnivorous : Animal
     {
-        protected bool Herbivore = true;
-        protected bool Predator = true;
-        protected bool Agressive = false;
+        private bool Herbivore = true;
+        private bool Predator = true;
+        private bool Agressive = false;
         public Omnivorous(int x, int y, bool famel, int speed,int Hangrytime, int pregnancy, int hp, int dmg , int vision, int deadAge ) : base(Color.Purple, x, y, speed, famel, hp, deadAge)
         {
             DMG = dmg;
@@ -36,9 +36,9 @@ namespace Life
                 if (Eat.X < WorldInfo.map.GetLength(0) && Eat.Y < WorldInfo.map.GetLength(0) && Eat.GetType() == typeof(Animal) && WorldInfo.animals[Eat.X, Eat.Y] != null)
                     Eat = WorldInfo.animals[Eat.X, Eat.Y];
             }
-            if (Eat == null && Herbivore && !Agressive)
+            if (Eat == null && Herbivore && !Agressive && Hangry)
                 EatLocation<Tree>(WorldInfo.plants);
-            if (Eat == null && Predator)
+            if ((Eat == null && Predator && Hangry)|| Agressive)
                 EatLocation<Omnivorous>(WorldInfo.animals);
             if (Pair == null && !Hangry)
                 PairLocation<Omnivorous>(WorldInfo.animals);
@@ -49,7 +49,7 @@ namespace Life
             if (!Hangry && hangrtime > HangryTime)
             {
                 Hangry = true;
-                Agressive = false;
+                Agressive = true;
             }
             SpeedTime -= 1;
             if (Eat == null || !Hangry)
@@ -64,6 +64,7 @@ namespace Life
                     {
                         Sex(Pair);
                         Hangry = true;
+                        Agressive = false;
                         pair = false;
                         hangrtime = 0;
                     }
@@ -124,10 +125,7 @@ namespace Life
             else famel = false;
             WorldInfo.animals[x, y] = new Omnivorous(x, y, famel, Form1.rnd.Next(2, 8), HangryTime + Form1.rnd.Next(-1, 2), PregnancyTime + Form1.rnd.Next(-2, 3), Heals + Form1.rnd.Next(-20, 20), DMG + Form1.rnd.Next(-2, 3), Vision,DeadAge + Form1.rnd.Next(-5, 5));
         }
-        protected override void Eating(IFood food)
-        {
-            base.Eating(food);
-        }
+        
         public override void Heat()
         {
             base.Heat();

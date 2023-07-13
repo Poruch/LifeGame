@@ -26,10 +26,12 @@ namespace Life
             Heat();
         }
         protected int DeadAge = 100;
+
         protected int HangryTime = 3;
         protected int hangrtime = 0;
         protected bool Hangry = true;
         protected bool food = false;
+
         protected int DMG = 30;
         protected int SpeedTime;
         protected readonly int Speed;
@@ -42,7 +44,7 @@ namespace Life
         protected bool Gender;
         protected bool Pregnancy = false;
 
-        protected Object Eat;
+        protected IFood Eat;
         
         protected int Age = 0;
         
@@ -113,34 +115,34 @@ namespace Life
         
         void MoviUp()
         {
-            if (base.Y < WorldInfo.map.GetLength(0) -1 && WorldInfo.animals[base.X, base.Y + 1] == null)
+            if (Y < WorldInfo.map.GetLength(0) -1 && WorldInfo.animals[    X, Y + 1] == null)
             {
-                (WorldInfo.animals[base.X, base.Y + 1], WorldInfo.animals[base.X, base.Y]) = (WorldInfo.animals[base.X, base.Y], WorldInfo.animals[base.X, base.Y + 1]);
-                base.Y += 1;
+                (WorldInfo.animals[X, Y + 1], WorldInfo.animals[X, Y]) = (WorldInfo.animals[X, Y], WorldInfo.animals[X, Y + 1]);
+                Y += 1;
             }
         }
         void MoviDown()
         {
-            if (base.Y > 0 && WorldInfo.animals[base.X, base.Y - 1] == null)
+            if (Y > 0 && WorldInfo.animals[X, Y - 1] == null)
             {
-                (WorldInfo.animals[base.X, base.Y - 1], WorldInfo.animals[base.X, base.Y]) = (WorldInfo.animals[base.X, base.Y], WorldInfo.animals[base.X, base.Y - 1]);
-                base.Y -= 1;
+                (WorldInfo.animals[X, Y - 1], WorldInfo.animals[X, Y]) = (WorldInfo.animals[X, Y], WorldInfo.animals[X, Y - 1]);
+                Y -= 1;
             }
         }
         void MoviLeft()
         {
-            if (base.X > 0 && WorldInfo.animals[base.X - 1, base.Y] == null)
+            if (X > 0 && WorldInfo.animals[X - 1, Y] == null)
             {
-                (WorldInfo.animals[base.X - 1, base.Y], WorldInfo.animals[base.X, base.Y]) = (WorldInfo.animals[base.X, base.Y], WorldInfo.animals[base.X - 1, base.Y]);
-                base.X -= 1;
+                (WorldInfo.animals[X - 1, Y], WorldInfo.animals[X, Y]) = (WorldInfo.animals[X, Y], WorldInfo.animals[   X - 1, Y]);
+                X -= 1;
             }
         }
         void MoviRight()
         {
-            if (base.X < WorldInfo.map.GetLength(0) - 1 && WorldInfo.animals[base.X + 1, base.Y] == null)
+            if (X < WorldInfo.map.GetLength(0) - 1 && WorldInfo.animals[X + 1, Y] == null)
             {
-                (WorldInfo.animals[base.X + 1, base.Y], WorldInfo.animals[base.X, base.Y]) = (WorldInfo.animals[base.X, base.Y], WorldInfo.animals[base.X + 1, base.Y]);
-                base.X += 1;
+                (WorldInfo.animals[X + 1, Y], WorldInfo.animals[X, Y]) = (WorldInfo.animals[X, Y], WorldInfo.animals[X + 1,Y]);
+                X += 1;
             }
         }
 
@@ -167,12 +169,12 @@ namespace Life
         {
 
         }
-        protected virtual void Eating( IFood Eats)
+        protected  void Eating( IFood Eats)
         {
             Eats.Eated();
             Eat = null;
         }
-        protected bool Follow(Object Who)
+        protected bool Follow(IPoint Who)
         {
             if (X - Who.X > 1)
             {
@@ -207,7 +209,7 @@ namespace Life
             base.Paint(graphics);
             if (Pregnancy && L > 2)
             {
-                graphics.FillEllipse(Brushes.Beige, base.X * L, base.Y * L, L-2, L-2);
+                graphics.FillEllipse(Brushes.Beige, X * L, Y * L, L-2, L-2);
             }
         }
         protected void EatLocation<T>(IFood[,] Eats)
@@ -218,23 +220,19 @@ namespace Life
                 int column_limit = Eats.GetLength(1);
                 for (int i = 1; i <= Vision; i++)
                 {
+                    if (Eat != null) break;
                     for (int x = Math.Max(0, X - i); x <= Math.Min(X + i, row_limit); x++)
                     {
+                        if (Eat != null) break;
                         for (int y = Math.Max(0, Y - i); y <= Math.Min(Y + i, column_limit); y++)
-                        {                            
+                        {
+                            if (Eat != null) break;
                             if (((x <= WorldInfo.map.GetLength(0) - 1) && (x >= 0)) && ((y <= WorldInfo.map.GetLength(0) - 1) && (y >= 0)))
                             {
-                                if (Eats[x, y] != null && Eat != null )
+                                if (Eats[x, y] != null && Eat == null && Eats[x, y].Growed && Eats[x, y].GetType() != typeof(T))
                                 {
-                                    if (Math.Abs(Eat.X - X + Eat.Y - Y) > Math.Abs(x - X + x - Y))
-                                    {
-                                        if (Eats[x, y].GetType() == typeof(T))
-                                            Eat = (Object)Eats[x, y];
-                                    }
-                                }
-                                else if (Eats[x, y] != null && Eat == null && Eats[x, y].Growed && Eats[x, y].GetType() != typeof(T))
-                                {
-                                    Eat = (Object)Eats[x, y];
+                                    Eat = Eats[x, y];
+                                    break;
                                 }
                             }                            
                         }
@@ -251,26 +249,21 @@ namespace Life
                 int column_limit = animal.GetLength(1);
                 for (int i = 1; i <= Vision; i++)
                 {
+                    if (Pair != null) break;
                     for (int x = Math.Max(0, X - i); x <= Math.Min(X + i, row_limit); x++)
                     {
+                        if (Pair != null) break;
                         for (int y = Math.Max(0, Y - i); y <= Math.Min(Y + i, column_limit); y++)
-                        {
+                        {                            
                             if (x != X || y != Y)
-                            {
+                            {                                
                                 if (((x <=  WorldInfo.map.GetLength(0) - 1) && (x >= 0)) && ((y <= WorldInfo.map.GetLength(0) - 1) && (y >= 0)))
                                 {
-                                    if (animal[x, y] != null && Pair != null && (animal[x, y].Gender != Gender))
-                                    {
-                                        if (Math.Abs(Pair.X - X + Pair.Y - Y) > Math.Abs(animal[x, y].X - X + animal[x, y].Y - Y))
-                                        {
-                                            if (animal[x, y].GetType() == typeof(T))
-                                                Pair = animal[x, y];
-                                        }
-                                    }
-                                    else if (animal[x, y] != null && Pair == null && (animal[x, y].Gender != Gender))
+                                    if (animal[x, y] != null && Pair == null && (animal[x, y].Gender != Gender))
                                     {
                                         if (animal[x, y].GetType() == typeof(T))
                                             Pair = animal[x, y];
+                                        break;
                                     }
                                 }
                             }

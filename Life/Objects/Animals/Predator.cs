@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Life
 {
-    internal class Predator :Animal
+    internal sealed class Predator :Animal
     {
-        
-        protected bool Agressive = false;
+
+        private bool Agressive = false;
         public Predator(int x, int y, bool famel, int speed, int Hangrytime, int pregnancy, int hp, int dmg, int vision,int deadAge) : base(Color.Red, x, y, speed, famel, hp,deadAge)
         {
             if (dmg <=0 || Hangrytime <=0 || speed <0 || vision < 0 || pregnancy <= 0) { base.Dead(); }
@@ -22,7 +22,7 @@ namespace Life
         }
         public override void Movi()
         {
-           
+            SpeedTime -= 1;
             if (pregnancytime == PregnancyTime && Pregnancy)
             {
                 pregnancytime = 0;
@@ -34,7 +34,7 @@ namespace Life
                 if (Eat.X < WorldInfo.map.GetLength(0) && Eat.Y < WorldInfo.map.GetLength(0) &&  Eat.GetType() == typeof(Animal) && WorldInfo.animals[Eat.X, Eat.Y] != null)
                     Eat = WorldInfo.animals[Eat.X, Eat.Y];
             }
-            if (Eat == null )
+            if ((Eat == null && Hangry )|| Agressive)
                 EatLocation<Predator>(WorldInfo.animals);
             if (Pair == null && !Hangry)
                 PairLocation<Predator>(WorldInfo.animals);
@@ -45,9 +45,8 @@ namespace Life
             if (!Hangry && hangrtime > HangryTime)
             {
                 Hangry = true;
-                Agressive = false;
-            }
-            SpeedTime -= 1;
+                Agressive = true;
+            }            
             if (Eat == null || !Hangry)
             {
                 if (SpeedTime == 0 && !Hangry && Pair != null && !Pregnancy)
@@ -96,6 +95,7 @@ namespace Life
                     {
                         Eating((IFood)Eat);
                         Hangry = false;
+                        Agressive = false;
                         food = false;
                         hangrtime = 0;
                     }
@@ -119,10 +119,7 @@ namespace Life
             else famel = false;
             WorldInfo.animals[x, y] = new Predator(x, y, famel,  Form1.rnd.Next(2, 8), HangryTime + Form1.rnd.Next(-1, 2), PregnancyTime + Form1.rnd.Next(-2, 3), Heals + Form1.rnd.Next(-20, 20), DMG + Form1.rnd.Next(-2, 3), Vision , DeadAge + Form1.rnd.Next(-5,5));
         }
-        protected override void Eating(IFood food)
-        {
-            base.Eating(food);
-        }
+        
     }
 
 }

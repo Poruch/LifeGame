@@ -33,7 +33,7 @@ namespace Life
                 if (Eat.X < WorldInfo.map.GetLength(0) && Eat.Y < WorldInfo.map.GetLength(0) && WorldInfo.plants[Eat.X, Eat.Y] != null)
                 Eat = WorldInfo.plants[Eat.X, Eat.Y];
             }
-            if (Eat == null)
+            if (Eat == null && Hangry)
                 EatLocation<Tree>(WorldInfo.plants);
             if (Pair == null && !Hangry)
                 PairLocation<Herbivore>(WorldInfo.animals);
@@ -117,10 +117,7 @@ namespace Life
             else famel = false;
             WorldInfo.animals[x, y] = new Herbivore(x,y ,famel,Form1.rnd.Next(2,8), HangryTime + Form1.rnd.Next(-1, 2), PregnancyTime + Form1.rnd.Next(-2, 3), Heals + Form1.rnd.Next(-20, 20), DMG + Form1.rnd.Next(-2, 3),Vision, DeadAge + Form1.rnd.Next(-5, 5));
         }
-        protected override void Eating( IFood food)
-        {
-            base.Eating( food);
-        }
+        
         public override void Heat()
         {
             base.Heat();

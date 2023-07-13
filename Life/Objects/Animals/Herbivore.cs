@@ -37,7 +37,7 @@ namespace Life
                 EatLocation<Tree>(WorldInfo.plants);
             if (Pair == null && !Hangry)
                 PairLocation<Herbivore>(WorldInfo.animals);
-            if (hangrtime > HangryTime * 20)
+            if (hangrtime > HangryTime * 5)
             {
                 base.Dead();
             }

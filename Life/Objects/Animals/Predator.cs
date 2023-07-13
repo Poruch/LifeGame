@@ -38,7 +38,7 @@ namespace Life
                 EatLocation<Predator>(WorldInfo.animals);
             if (Pair == null && !Hangry)
                 PairLocation<Predator>(WorldInfo.animals);
-            if (hangrtime > HangryTime * 10)
+            if (hangrtime > HangryTime * 5)
             {
                 base.Dead();
             }

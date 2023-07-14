@@ -87,6 +87,7 @@
             this.SpeedH.Size = new System.Drawing.Size(100, 20);
             this.SpeedH.TabIndex = 1;
             this.SpeedH.Text = "5";
+            this.SpeedH.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.X1_KeyPress);
             // 
             // HangryH
             // 
@@ -95,6 +96,7 @@
             this.HangryH.Size = new System.Drawing.Size(100, 20);
             this.HangryH.TabIndex = 2;
             this.HangryH.Text = "5";
+            this.HangryH.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.X1_KeyPress);
             // 
             // PregnancyH
             // 
@@ -103,6 +105,7 @@
             this.PregnancyH.Size = new System.Drawing.Size(100, 20);
             this.PregnancyH.TabIndex = 3;
             this.PregnancyH.Text = "5";
+            this.PregnancyH.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.X1_KeyPress);
             // 
             // HealsH
             // 
@@ -111,6 +114,7 @@
             this.HealsH.Size = new System.Drawing.Size(100, 20);
             this.HealsH.TabIndex = 4;
             this.HealsH.Text = "100";
+            this.HealsH.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.X1_KeyPress);
             // 
             // DMGH
             // 
@@ -119,6 +123,7 @@
             this.DMGH.Size = new System.Drawing.Size(100, 20);
             this.DMGH.TabIndex = 5;
             this.DMGH.Text = "10";
+            this.DMGH.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.X1_KeyPress);
             // 
             // RVisionH
             // 
@@ -127,6 +132,7 @@
             this.RVisionH.Size = new System.Drawing.Size(100, 20);
             this.RVisionH.TabIndex = 6;
             this.RVisionH.Text = "3";
+            this.RVisionH.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.X1_KeyPress);
             // 
             // DeadAgeH
             // 
@@ -135,6 +141,7 @@
             this.DeadAgeH.Size = new System.Drawing.Size(100, 20);
             this.DeadAgeH.TabIndex = 7;
             this.DeadAgeH.Text = "100";
+            this.DeadAgeH.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.X1_KeyPress);
             // 
             // label1
             // 
@@ -161,6 +168,7 @@
             this.DeadAgeP.Size = new System.Drawing.Size(100, 20);
             this.DeadAgeP.TabIndex = 17;
             this.DeadAgeP.Text = "100";
+            this.DeadAgeP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.X1_KeyPress);
             // 
             // RVisionP
             // 
@@ -169,6 +177,7 @@
             this.RVisionP.Size = new System.Drawing.Size(100, 20);
             this.RVisionP.TabIndex = 16;
             this.RVisionP.Text = "5";
+            this.RVisionP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.X1_KeyPress);
             // 
             // DMGP
             // 
@@ -177,6 +186,7 @@
             this.DMGP.Size = new System.Drawing.Size(100, 20);
             this.DMGP.TabIndex = 15;
             this.DMGP.Text = "30";
+            this.DMGP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.X1_KeyPress);
             // 
             // HealsP
             // 
@@ -185,6 +195,7 @@
             this.HealsP.Size = new System.Drawing.Size(100, 20);
             this.HealsP.TabIndex = 14;
             this.HealsP.Text = "200";
+            this.HealsP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.X1_KeyPress);
             // 
             // PregnancyP
             // 
@@ -193,6 +204,7 @@
             this.PregnancyP.Size = new System.Drawing.Size(100, 20);
             this.PregnancyP.TabIndex = 13;
             this.PregnancyP.Text = "4";
+            this.PregnancyP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.X1_KeyPress);
             // 
             // HangryP
             // 
@@ -201,6 +213,7 @@
             this.HangryP.Size = new System.Drawing.Size(100, 20);
             this.HangryP.TabIndex = 12;
             this.HangryP.Text = "4";
+            this.HangryP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.X1_KeyPress);
             // 
             // SpeedP
             // 
@@ -209,6 +222,7 @@
             this.SpeedP.Size = new System.Drawing.Size(100, 20);
             this.SpeedP.TabIndex = 11;
             this.SpeedP.Text = "3";
+            this.SpeedP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.X1_KeyPress);
             // 
             // button3
             // 
@@ -236,6 +250,7 @@
             this.DeadAgeO.Size = new System.Drawing.Size(100, 20);
             this.DeadAgeO.TabIndex = 26;
             this.DeadAgeO.Text = "100";
+            this.DeadAgeO.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.X1_KeyPress);
             // 
             // RVisionO
             // 
@@ -244,6 +259,7 @@
             this.RVisionO.Size = new System.Drawing.Size(100, 20);
             this.RVisionO.TabIndex = 25;
             this.RVisionO.Text = "2";
+            this.RVisionO.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.X1_KeyPress);
             // 
             // DMGO
             // 
@@ -252,6 +268,7 @@
             this.DMGO.Size = new System.Drawing.Size(100, 20);
             this.DMGO.TabIndex = 24;
             this.DMGO.Text = "20";
+            this.DMGO.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.X1_KeyPress);
             // 
             // HealsO
             // 
@@ -260,6 +277,7 @@
             this.HealsO.Size = new System.Drawing.Size(100, 20);
             this.HealsO.TabIndex = 23;
             this.HealsO.Text = "50";
+            this.HealsO.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.X1_KeyPress);
             // 
             // PregnancyO
             // 
@@ -268,6 +286,7 @@
             this.PregnancyO.Size = new System.Drawing.Size(100, 20);
             this.PregnancyO.TabIndex = 22;
             this.PregnancyO.Text = "2";
+            this.PregnancyO.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.X1_KeyPress);
             // 
             // HangryO
             // 
@@ -276,6 +295,7 @@
             this.HangryO.Size = new System.Drawing.Size(100, 20);
             this.HangryO.TabIndex = 21;
             this.HangryO.Text = "3";
+            this.HangryO.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.X1_KeyPress);
             // 
             // SpeedO
             // 
@@ -284,6 +304,7 @@
             this.SpeedO.Size = new System.Drawing.Size(100, 20);
             this.SpeedO.TabIndex = 20;
             this.SpeedO.Text = "4";
+            this.SpeedO.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.X1_KeyPress);
             // 
             // button2
             // 
@@ -402,6 +423,7 @@
             this.t1.Size = new System.Drawing.Size(30, 20);
             this.t1.TabIndex = 39;
             this.t1.Text = "2";
+            this.t1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.X1_KeyPress);
             // 
             // t2
             // 
@@ -410,6 +432,7 @@
             this.t2.Size = new System.Drawing.Size(30, 20);
             this.t2.TabIndex = 40;
             this.t2.Text = "2";
+            this.t2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.X1_KeyPress);
             // 
             // Form2
             // 

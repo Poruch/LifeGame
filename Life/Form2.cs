@@ -46,5 +46,14 @@ namespace Life
             if (int.TryParse(t1.Text, out a) && int.TryParse(t2.Text, out b))
                 WorldInfo.grassquality = new int[] { a, b };
         }
+        private void X1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            if (!Char.IsDigit(number) && number != 8) // цифры и клавиша BackSpace
+            {
+                e.Handled = true;
+            }
+
+        }
     }
 }

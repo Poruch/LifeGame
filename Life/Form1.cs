@@ -213,6 +213,7 @@ namespace Life
             int.TryParse(Y1.Text, out y);
             int.TryParse(X2.Text, out x2);
             int.TryParse(Y2.Text, out y2);
+            if (x <= x2 && y <= y2 )
             for (int i = x; i <= x2; i++)
             {
                 for(int j = y; j <= y2; j++)
@@ -226,6 +227,49 @@ namespace Life
                     }
                 }
             }
+            else if(y <= y2 && x2 <= x)
+                for (int i = x2; i <= x; i++)
+                {
+                    for (int j = y; j <= y2; j++)
+                    {
+                        if (i >= 0 && i <= WorldInfo.map.GetLength(0) - 1 && j >= 0 && j <= WorldInfo.map.GetLength(0) - 1)
+                        {
+                            if (WorldInfo.animals[i, j] != null)
+                                WorldInfo.animals[i, j].Dead();
+                            if (WorldInfo.plants[i, j] != null)
+                                WorldInfo.plants[i, j].Dead();
+                        }
+                    }
+                }
+            else if(y2 <= y && x2 <= x)
+                for (int i = x2; i <= x; i++)
+                {
+                    for (int j = y2; j <= y; j++)
+                    {
+                        if (i >= 0 && i <= WorldInfo.map.GetLength(0) - 1 && j >= 0 && j <= WorldInfo.map.GetLength(0) - 1)
+                        {
+                            if (WorldInfo.animals[i, j] != null)
+                                WorldInfo.animals[i, j].Dead();
+                            if (WorldInfo.plants[i, j] != null)
+                                WorldInfo.plants[i, j].Dead();
+                        }
+                    }
+                }
+            else  if(y2 <= y && x <= x2)
+                for (int i = x; i <= x2; i++)
+                {
+                    for (int j = y2; j <= y; j++)
+                    {
+                        if (i >= 0 && i <= WorldInfo.map.GetLength(0) - 1 && j >= 0 && j <= WorldInfo.map.GetLength(0) - 1)
+                        {
+                            if (WorldInfo.animals[i, j] != null)
+                                WorldInfo.animals[i, j].Dead();
+                            if (WorldInfo.plants[i, j] != null)
+                                WorldInfo.plants[i, j].Dead();
+                        }
+                    }
+                }
+
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -248,6 +292,35 @@ namespace Life
             }
             Painter.Enabled = true;
             Generation.Enabled = true;
+        }
+
+        private void X1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            if (!Char.IsDigit(number) && number != 8) // цифры и клавиша BackSpace
+            {
+                e.Handled = true;
+            }         
+            
+        }
+        bool put = false;
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            
+            int CursorX = (Cursor.Position.X - this.Location.X -216)/scale; 
+            int CursorY = (Cursor.Position.Y - this.Location.Y - 35)/scale;
+            if(!put)
+            {
+                X1.Text = CursorX.ToString();
+                Y1.Text = CursorY.ToString();
+                put = true;
+            }
+            else
+            {
+                X2.Text = CursorX.ToString();
+                Y2.Text = CursorY.ToString();
+                put = false;
+            }
         }
     }
 }

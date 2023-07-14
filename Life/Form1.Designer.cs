@@ -111,16 +111,17 @@
             // 
             // scale1
             // 
-            this.scale1.Location = new System.Drawing.Point(3, 300);
+            this.scale1.Location = new System.Drawing.Point(7, 300);
             this.scale1.Name = "scale1";
             this.scale1.Size = new System.Drawing.Size(61, 20);
             this.scale1.TabIndex = 24;
             this.scale1.Text = "10";
+            this.scale1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.X1_KeyPress);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(4, 284);
+            this.label5.Location = new System.Drawing.Point(10, 284);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 13);
             this.label5.TabIndex = 23;
@@ -139,25 +140,28 @@
             // 
             this.X2.Location = new System.Drawing.Point(117, 178);
             this.X2.Name = "X2";
-            this.X2.Size = new System.Drawing.Size(35, 20);
+            this.X2.Size = new System.Drawing.Size(20, 20);
             this.X2.TabIndex = 21;
             this.X2.Text = "0";
+            this.X2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.X1_KeyPress);
             // 
             // Y2
             // 
-            this.Y2.Location = new System.Drawing.Point(158, 178);
+            this.Y2.Location = new System.Drawing.Point(143, 178);
             this.Y2.Name = "Y2";
-            this.Y2.Size = new System.Drawing.Size(35, 20);
+            this.Y2.Size = new System.Drawing.Size(20, 20);
             this.Y2.TabIndex = 20;
             this.Y2.Text = "0";
+            this.Y2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.X1_KeyPress);
             // 
             // Y1
             // 
-            this.Y1.Location = new System.Drawing.Point(44, 178);
+            this.Y1.Location = new System.Drawing.Point(31, 178);
             this.Y1.Name = "Y1";
-            this.Y1.Size = new System.Drawing.Size(35, 20);
+            this.Y1.Size = new System.Drawing.Size(20, 20);
             this.Y1.TabIndex = 19;
             this.Y1.Text = "0";
+            this.Y1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.X1_KeyPress);
             // 
             // label3
             // 
@@ -172,9 +176,10 @@
             // 
             this.X1.Location = new System.Drawing.Point(7, 178);
             this.X1.Name = "X1";
-            this.X1.Size = new System.Drawing.Size(35, 20);
+            this.X1.Size = new System.Drawing.Size(20, 20);
             this.X1.TabIndex = 17;
             this.X1.Text = "0";
+            this.X1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.X1_KeyPress);
             // 
             // button5
             // 
@@ -188,7 +193,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(123, 380);
+            this.button4.Location = new System.Drawing.Point(117, 380);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 12;
@@ -218,7 +223,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 367);
+            this.label1.Location = new System.Drawing.Point(10, 367);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 13);
             this.label1.TabIndex = 7;
@@ -231,15 +236,17 @@
             this.Count1.Size = new System.Drawing.Size(34, 20);
             this.Count1.TabIndex = 4;
             this.Count1.Text = "1";
+            this.Count1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.X1_KeyPress);
             // 
             // SpeedTime
             // 
-            this.SpeedTime.Location = new System.Drawing.Point(4, 383);
+            this.SpeedTime.Location = new System.Drawing.Point(7, 383);
             this.SpeedTime.Name = "SpeedTime";
             this.SpeedTime.Size = new System.Drawing.Size(64, 20);
             this.SpeedTime.TabIndex = 3;
             this.SpeedTime.Text = "1";
             this.SpeedTime.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.SpeedTime.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.X1_KeyPress);
             // 
             // button2
             // 
@@ -274,12 +281,12 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(550, 550);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.DoubleClick += new System.EventHandler(this.pictureBox1_Click);
             // 
             // Painter
             // 

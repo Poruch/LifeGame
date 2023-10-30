@@ -14,7 +14,8 @@ namespace Life
     internal abstract class Animal :Object, IFood
     {
         protected int Vision = 2;
-        
+
+        protected const int Maxpopulation = 2000;        
         protected bool Grow = true;
         public bool Growed
         {
@@ -76,8 +77,6 @@ namespace Life
         }
         protected void Birth()
         {
-            Pregnancy = false;
-            Hangry = true;
             for (int i = 0; i < Form1.rnd.Next(1, 3); i++)
             {
                 bool b = true;

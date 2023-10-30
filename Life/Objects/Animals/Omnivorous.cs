@@ -9,6 +9,8 @@ namespace Life
 {
     internal sealed class Omnivorous : Animal
     {
+
+        static int currentpopulation = 0;
         private bool Herbivore = true;
         private bool Predator = true;
         private bool Agressive = false;
@@ -26,8 +28,11 @@ namespace Life
             if (pregnancytime == PregnancyTime && Pregnancy)
             {
                 pregnancytime = 0;
-                Birth();
+                if (currentpopulation <= Maxpopulation)
+                    Birth();
                 Pair = null;
+                Pregnancy = false;
+                Hangry = true;
             }
             if (Eat != null)
             {
@@ -44,6 +49,7 @@ namespace Life
                 PairLocation<Omnivorous>(WorldInfo.animals);
             if (hangrtime > HangryTime * 5)
             {
+                currentpopulation--;
                 base.Dead();
             }
             if (!Hangry && hangrtime > HangryTime)
@@ -74,6 +80,7 @@ namespace Life
                     hangrtime += 1;
                     if (Age > Heals * Math.Sin(Math.PI * Age / DeadAge) + 20)
                     {
+                        currentpopulation--;
                         base.Dead();
                     }
                 }
@@ -87,6 +94,7 @@ namespace Life
                     hangrtime += 1;
                     if (Age > Heals * Math.Sin(Math.PI * Age / DeadAge) + 20)
                     {
+                        currentpopulation--;
                         base.Dead();
                     }
                 }

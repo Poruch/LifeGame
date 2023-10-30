@@ -10,9 +10,11 @@ using System.Windows.Forms;
 namespace Life
 {
     internal sealed class Herbivore : Animal 
-    {        
+    {
+        static int currentpopulation = 0;
         public Herbivore(int x, int y, bool famel, int speed, int Hangrytime, int pregnancy, int hp, int dmg, int vision , int deadAge) : base(Color.DeepSkyBlue, x, y, speed, famel, hp, deadAge)
         {
+            currentpopulation ++;
             DMG = dmg;
             HangryTime = Hangrytime;
             SpeedTime = speed;
@@ -25,8 +27,11 @@ namespace Life
             if (pregnancytime == PregnancyTime && Pregnancy)
             {
                 pregnancytime = 0;
+                if(currentpopulation <= Maxpopulation)
                 Birth();
                 Pair = null;
+                Pregnancy = false;
+                Hangry = true;
             }
             if(Eat != null)
             {
@@ -39,6 +44,7 @@ namespace Life
                 PairLocation<Herbivore>(WorldInfo.animals);
             if (hangrtime > HangryTime * 5)
             {
+                currentpopulation--;
                 base.Dead();
             }
             if (!Hangry&& hangrtime > HangryTime)
@@ -67,6 +73,7 @@ namespace Life
                     hangrtime += 1;
                     if (Age > Heals * Math.Sin(Math.PI * Age / DeadAge) + 20)
                     {
+                        currentpopulation--;
                         base.Dead();
                     }
                 }
@@ -80,6 +87,7 @@ namespace Life
                     hangrtime += 1;
                     if (Age > Heals * Math.Sin(Math.PI * Age / DeadAge) + 20)
                     {
+                        currentpopulation--;
                         base.Dead();
                     }
                 }
@@ -104,6 +112,7 @@ namespace Life
                     hangrtime += 1;
                     if (Age > Heals * Math.Sin(Math.PI * Age / 100) + 20)
                     {
+                        currentpopulation--;
                         base.Dead();
                     }
                 }
@@ -124,5 +133,6 @@ namespace Life
             Hangry = true;
             hangrtime = 0;
         }
+        
     }
 }

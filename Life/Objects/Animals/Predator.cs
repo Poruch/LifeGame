@@ -10,6 +10,7 @@ namespace Life
     internal sealed class Predator :Animal
     {
 
+        static int currentpopulation = 0;
         private bool Agressive = false;
         public Predator(int x, int y, bool famel, int speed, int Hangrytime, int pregnancy, int hp, int dmg, int vision,int deadAge) : base(Color.Red, x, y, speed, famel, hp,deadAge)
         {
@@ -25,9 +26,16 @@ namespace Life
             SpeedTime -= 1;
             if (pregnancytime == PregnancyTime && Pregnancy)
             {
-                pregnancytime = 0;
-                Birth();
-                Pair = null;
+
+
+                if (currentpopulation <= Maxpopulation)
+                {
+                    pregnancytime = 0;
+                    Birth();
+                    Pair = null;
+                    Pregnancy = false;
+                    Hangry = true;
+                }
             }         
             if (Eat != null)
             {
@@ -68,6 +76,7 @@ namespace Life
                     hangrtime += 1;
                     if (Age > Heals * Math.Sin(Math.PI * Age / DeadAge) + 20)
                     {
+                        currentpopulation--;
                         base.Dead();
                     }
                 }
@@ -81,6 +90,7 @@ namespace Life
                     hangrtime += 1;
                     if (Age > Heals * Math.Sin(Math.PI * Age / DeadAge) + 20)
                     {
+                        currentpopulation--;
                         base.Dead();
                     }
                 }
@@ -106,6 +116,7 @@ namespace Life
                     hangrtime += 1;
                     if (Age > Heals * Math.Sin(Math.PI * Age / DeadAge) + 20)
                     {
+                        currentpopulation--;
                         base.Dead();
                     }
                 }
@@ -118,8 +129,6 @@ namespace Life
             if (Form1.rnd.Next(2) == 1) famel = true;
             else famel = false;
             WorldInfo.animals[x, y] = new Predator(x, y, famel,  Form1.rnd.Next(2, 8), HangryTime + Form1.rnd.Next(-1, 2), PregnancyTime + Form1.rnd.Next(-2, 3), Heals + Form1.rnd.Next(-20, 20), DMG + Form1.rnd.Next(-2, 3), Vision , DeadAge + Form1.rnd.Next(-5,5));
-        }
-        
+        }        
     }
-
 }

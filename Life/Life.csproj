@@ -60,6 +60,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Objects\Water.cs" />
     <Compile Include="Objects\Plants\Grass.cs" />
     <Compile Include="Objects\Animals\Herbivore.cs" />
     <Compile Include="Intarface\IFood.cs" />

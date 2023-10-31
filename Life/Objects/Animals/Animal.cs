@@ -114,9 +114,10 @@ namespace Life
         
         void MoviUp()
         {
-            if (Y < WorldInfo.map.GetLength(0) -1 && WorldInfo.animals[    X, Y + 1] == null)
+            if (Y < WorldInfo.map.GetLength(0) -1 && WorldInfo.animals[X, Y + 1] == null)
             {
-                (WorldInfo.animals[X, Y + 1], WorldInfo.animals[X, Y]) = (WorldInfo.animals[X, Y], WorldInfo.animals[X, Y + 1]);
+                WorldInfo.animals[X, Y + 1]= WorldInfo.animals[X, Y];
+                WorldInfo.animals[X, Y] = null;
                 Y += 1;
             }
         }
@@ -124,15 +125,17 @@ namespace Life
         {
             if (Y > 0 && WorldInfo.animals[X, Y - 1] == null)
             {
-                (WorldInfo.animals[X, Y - 1], WorldInfo.animals[X, Y]) = (WorldInfo.animals[X, Y], WorldInfo.animals[X, Y - 1]);
+                WorldInfo.animals[X, Y - 1] = WorldInfo.animals[X, Y];
+                WorldInfo.animals[X, Y] = null;
                 Y -= 1;
             }
         }
         void MoviLeft()
         {
             if (X > 0 && WorldInfo.animals[X - 1, Y] == null)
-            {
-                (WorldInfo.animals[X - 1, Y], WorldInfo.animals[X, Y]) = (WorldInfo.animals[X, Y], WorldInfo.animals[   X - 1, Y]);
+            {                
+                WorldInfo.animals[X - 1, Y] = WorldInfo.animals[X, Y];
+                WorldInfo.animals[X, Y] = null;
                 X -= 1;
             }
         }
@@ -140,7 +143,8 @@ namespace Life
         {
             if (X < WorldInfo.map.GetLength(0) - 1 && WorldInfo.animals[X + 1, Y] == null)
             {
-                (WorldInfo.animals[X + 1, Y], WorldInfo.animals[X, Y]) = (WorldInfo.animals[X, Y], WorldInfo.animals[X + 1,Y]);
+                WorldInfo.animals[X + 1, Y] = WorldInfo.animals[X, Y];
+                WorldInfo.animals[X, Y] = null;
                 X += 1;
             }
         }

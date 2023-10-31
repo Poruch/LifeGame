@@ -20,8 +20,8 @@ namespace Life
         public Form1()
         {
             InitializeComponent();
-           
-            
+
+            WorldInfo.Start();
             Painter.Enabled = true;
             pictureBox1.Image = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             graphics = Graphics.FromImage(pictureBox1.Image);
@@ -29,7 +29,7 @@ namespace Life
             {
                 for (int j = 0; j < WorldInfo.map.GetLength(1); j++)
                 {
-                    WorldInfo.earths[i, j] = new Earth(i, j);
+                    WorldInfo.earth[i, j] = new Earth(i, j);
                     switch (rnd.Next(0,2))
                     {
                         case 0:
@@ -81,7 +81,7 @@ namespace Life
             {
                 for (int j = 0; j < WorldInfo.map.GetLength(1); j++)
                 {
-                    WorldInfo.map[i, j] = (Object)WorldInfo.plants[i, j] ?? (Object)WorldInfo.earths[i, j];
+                    WorldInfo.map[i, j] = (Object)WorldInfo.plants[i, j] ?? (Object)WorldInfo.earth[i, j];
                     WorldInfo.map[i, j] = WorldInfo.animals[i, j] ?? WorldInfo.map[i, j];
                     if (WorldInfo.plants[i, j] != null)
                     if(WorldInfo.plants[i, j].GetType()  == typeof(Tree))
@@ -287,7 +287,7 @@ namespace Life
                 for (int j = 0; j < Kollvo; j++)
                 {
                     
-                   WorldInfo.earths[i, j] = WorldInfo.earths[i, j] ?? new Earth(i, j);
+                   WorldInfo.earth[i, j] = WorldInfo.earth[i, j] ?? new Earth(i, j);
                 }
             }
             Painter.Enabled = true;

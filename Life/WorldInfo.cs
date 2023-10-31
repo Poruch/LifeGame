@@ -14,54 +14,63 @@ namespace Life
         public static Object[,] map = new Object[Kollvo, Kollvo];
         public static Animal[,] animals = new Animal[Kollvo, Kollvo];
         public static Plant[,] plants = new Plant[Kollvo, Kollvo];
+        public static List<Object[,]> Layers = new List<Object[,]>();
         public static IHightObject[,] hightObjects = new IHightObject[Kollvo, Kollvo];
-        public static Earth[,] earths = new Earth[Kollvo, Kollvo];
+        public static Earth[,] earth = new Earth[Kollvo, Kollvo];
+
+        private static Object[,] layer0 = new Object[Kollvo, Kollvo];
+        private static Object[,] layer1 = new Object[Kollvo, Kollvo];
+        private static Object[,] layer2 = new Object[Kollvo, Kollvo];
+        private static Object[,] layer3 = new Object[Kollvo, Kollvo];
 
         public static int[] herbivore = new int[7] { 5, 5, 5, 100, 10, 2, 100 };
         public static int[] predator = new int[7] { 3, 6, 4, 200, 40, 4, 100 };
         public static int[] omnivorous = new int[7] { 2, 4, 2, 50, 30, 5, 100 };
 
         public static int[] grassquality = new int[2] { 3, 2 };
-
+        public static void Start()
+        {
+            Layers.Add(layer0);
+            Layers.Add(layer1);
+            Layers.Add(layer2);
+            Layers.Add(layer3);
+        }
         public static void Scale()
         {
-         int Kollvo = Form1.Kollvo;
-         Object[,] map1 = new Object[Kollvo, Kollvo];
-         Animal[,] animals1 = new Animal[Kollvo, Kollvo];
-         Plant[,] plants1 = new Plant[Kollvo, Kollvo];
-         IHightObject[,] hightObjects1 = new IHightObject[Kollvo, Kollvo];
-         Earth[,] earths1 = new Earth[Kollvo, Kollvo];
-            if (WorldInfo.Kollvo < Kollvo )
-            for (int i = 0; i < WorldInfo.Kollvo; i++)
-            {
-                for (int j = 0; j < WorldInfo.Kollvo; j++)
+            int Count = Form1.Kollvo;
+            ScalingMassive<Object>(ref map, Count);
+            ScalingMassive<Animal>(ref animals, Count);
+            ScalingMassive<Plant>(ref plants, Count);
+            ScalingMassive<IHightObject>(ref hightObjects, Count);
+            ScalingMassive<Earth>(ref earth, Count);
+            ScalingMassive<Object>(ref layer0, Count);
+            ScalingMassive<Object>(ref layer1, Count);
+            ScalingMassive<Object>(ref layer2, Count);
+            ScalingMassive<Object>(ref layer3, Count);
+            WorldInfo.Kollvo = Count;
+        }
+        private static void ScalingMassive<T>(ref T[,] objects, int count)
+        {
+            T[,] values = new T[count,count];
+            int c = objects.GetLength(0);
+            if (c < count)
+                for (int i = 0; i < c; i++)
                 {
-                    map1[i, j] = map[i, j];
-                    animals1[i, j] = animals[i,j];
-                    plants1[i, j] = plants[i,j];
-                    hightObjects1[i, j] = hightObjects[i, j];
-                    earths1[i, j] = earths[i,j] ?? new Earth(i,j);                    
-                }
-            }
-            else
-                for (int i = 0; i < Kollvo; i++)
-                {
-                    for (int j = 0; j < Kollvo; j++)
+                    for (int j = 0; j < c; j++)
                     {
-                        map1[i, j] = map[i, j];
-                        animals1[i, j] = animals[i, j];
-                        plants1[i, j] = plants[i, j];
-                        hightObjects1[i, j] = hightObjects[i, j];
-                        earths1[i, j] = earths[i, j] ?? new Earth(i, j);
+                        values[i,j] = objects[i, j];
                     }
                 }
-            map = map1;
-            animals = animals1;
-            plants = plants1;
-            hightObjects = hightObjects1;
-            earths = earths1;
-            WorldInfo.Kollvo = Kollvo;
-        }    
+            else
+                for (int i = 0; i < count; i++)
+                {
+                    for (int j = 0; j < count; j++)
+                    {
+                        values[i, j] = objects[i, j];
+                    }
+                }
+            objects = values;
+        }
     }  
 
 }

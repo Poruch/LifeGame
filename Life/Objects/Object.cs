@@ -12,7 +12,7 @@ namespace Life
         
         protected Color _Color;
         
-        protected int L = Form1.scale;
+        protected static int L = Form1.scale;
       
         protected Object(Color color, int x,int y)
         {
